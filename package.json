@@ -1,0 +1,21 @@
+{
+  "name": "create-react-native-plugin",
+  "description": "Template for creating React Native plugins without native code.",
+  "author": "Matthias Giger",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": "github:naminho/create-react-native-plugin",
+  "main": "index.js",
+  "bin": {
+    "create-react-native-plugin": "./index.js",
+    "crnp": "./index.js"
+  },
+  "dependencies": {
+    "change-case": "4.1.0",
+    "fs-extra": "8.1.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  }
+}

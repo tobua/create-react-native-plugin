@@ -1,0 +1,5 @@
+node_modules
+# package-lock.json has no effect when publishing your plugin to npm.
+package-lock.json
+app/**/*
+!app/App.js
