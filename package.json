@@ -3,7 +3,7 @@
   "description": "Template for creating React Native plugins without native code.",
   "author": "Matthias Giger",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "github:naminho/create-react-native-plugin",
   "main": "index.js",
   "bin": {
