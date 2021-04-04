@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-
-const { resolve } = require('path')
-const { ensureDirSync, emptyDirSync, existsSync, copySync } = require('fs-extra')
-const { execSync } = require('child_process')
-const names = require('./names')
-const customize = require('./customize')
+import { join } from 'path'
+import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync } from 'fs'
+import { copySync } from 'fs-extra'
+import { execSync } from 'child_process'
+import names from './names.js'
+import customize from './customize.js'
 
 const args = process.argv
+
 if (args.length < 3) {
   return console.error('Please provide a name for your plugin.')
 }
@@ -19,12 +20,18 @@ if (existsSync(name.regular)) {
   )
 }
 
-ensureDirSync(name.regular)
-emptyDirSync(name.regular)
+if (existsSync(name.regular)) {
+  if (lstatSync(name.regular).isDirectory()) {
+    rmdirSync(name.regular, { recursive: true })
+  } else {
+    unlinkSync(name.regular)
+  }
+}
 
-const templateDirectory = resolve(__dirname, 'template')
+mkdirSync(name.regular)
 
-const destinationDirectory = resolve(process.cwd(), name.regular)
+const templateDirectory = join(__dirname, 'template')
+const destinationDirectory = join(process.cwd(), name.regular)
 
 copySync(templateDirectory, destinationDirectory)
 
@@ -32,11 +39,15 @@ customize(name, destinationDirectory)
 
 console.log('Installing dependencies...')
 
-execSync('npm i', { cwd: name.regular, stdio : 'pipe' })
+execSync('npm i', { cwd: destinationDirectory, stdio: 'pipe' })
 
 console.log('')
-console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)
+console.log(
+  `😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`
+)
 console.log(`🛠️  Start coding in the file src/index.js.`)
-console.log(`🛠️  To preview the plugin edit app/App.js and create a RN installation with:`)
+console.log(
+  `🛠️  To preview the plugin edit app/App.js and create a RN installation with:`
+)
 console.log(`🐚 cd ${name.regular}`)
 console.log('🐚 npm run app')

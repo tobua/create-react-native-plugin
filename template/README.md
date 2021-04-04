@@ -37,7 +37,7 @@ To test your plugin on a device run the following to create a React Native app u
 
 ```
 npm install
-npm run app --silent
+npm run app
 cd app
 react-native run-ios / react-native run-android
 ```

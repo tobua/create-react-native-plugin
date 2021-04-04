@@ -4,17 +4,15 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "app": "babel-node create-app",
+    "app": "node create-app.js",
     "watch": "cpx 'src/**/*' app/node_modules/<%= name %>/src --watch",
     "test": "jest --watchAll",
     "lint": "eslint ./src --fix",
     "format": "prettier \"src/**/*\" --write"
   },
   "prettier": {
-    "bracketSpacing": false,
-    "jsxBracketSameLine": true,
     "singleQuote": true,
-    "trailingComma": "all"
+    "semi": false
   },
   "eslintConfig": {
     "extends": "@react-native-community"
@@ -47,5 +45,8 @@
     "react-test-renderer": "^16.12.0",
     "recursive-copy": "^2.0.10",
     "rimraf": "^3.0.0"
+  },
+  "engines": {
+    "node": ">= 14"
   }
 }

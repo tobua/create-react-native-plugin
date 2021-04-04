@@ -1,21 +1,39 @@
 {
   "name": "create-react-native-plugin",
   "description": "Template for creating React Native plugins without native code.",
-  "author": "Matthias Giger",
-  "license": "MIT",
   "version": "1.0.1",
-  "repository": "github:naminho/create-react-native-plugin",
-  "main": "index.js",
-  "bin": {
-    "create-react-native-plugin": "./index.js",
-    "crnp": "./index.js"
+  "repository": "github:tobua/create-react-native-plugin",
+  "license": "MIT",
+  "author": "Matthias Giger",
+  "padua": {
+    "source": true
   },
   "dependencies": {
-    "change-case": "4.1.0",
-    "fs-extra": "8.1.0"
+    "change-case": "4.1.2",
+    "fs-extra": "9.1.0"
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
+  "type": "module",
+  "main": "index.js",
+  "sideEffects": false,
+  "bin": "index.js",
+  "source": "index.js",
+  "files": [
+    "**/*.js"
+  ],
+  "devDependencies": {
+    "padua": "^0.3.5"
+  },
+  "prettier": "padua/configuration/.prettierrc.json",
+  "eslintConfig": {
+    "extends": "./node_modules/padua/configuration/eslint.cjs",
+    "rules": {
+      "import/extensions": [
+        2,
+        "ignorePackages"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">= 14"
   }
 }

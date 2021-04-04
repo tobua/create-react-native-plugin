@@ -1,29 +1,29 @@
 // @flow
-import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
 export type Props = {
   initialCount: number,
-};
+}
 
 type State = {
   count: number,
-};
+}
 
 export default class <%= pascal %> extends Component<Props, State> {
   static defaultProps = {
     initialCount: 0,
-  };
+  }
 
   state = {
     count: this.props.initialCount,
-  };
+  }
 
   handlePress = () => {
     this.setState({
       count: this.state.count + 1,
-    });
-  };
+    })
+  }
 
   renderThirdLayer(percent: number) {
     if (percent > 50) {
@@ -32,15 +32,15 @@ export default class <%= pascal %> extends Component<Props, State> {
           key={percent + 99999}
           style={[styles.secondProgressLayer, rotation(percent - 50, 45)]}
         />
-      );
+      )
     }
 
-    return <View style={styles.offsetLayer} />;
+    return <View style={styles.offsetLayer} />
   }
 
   render() {
-    const {count} = this.state;
-    let percent = count % 100;
+    const { count } = this.state
+    let percent = count % 100
 
     return (
       <View style={styles.view}>
@@ -57,13 +57,13 @@ export default class <%= pascal %> extends Component<Props, State> {
           </View>
         </TouchableOpacity>
       </View>
-    );
+    )
   }
 }
 
 const rotation = (percent: number, base: number) => ({
-  transform: [{rotateZ: `${base + (percent > 50 ? 50 : percent) * 3.6}deg`}],
-});
+  transform: [{ rotateZ: `${base + (percent > 50 ? 50 : percent) * 3.6}deg` }],
+})
 
 const styles = StyleSheet.create({
   view: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderRightColor: 'gray',
     borderTopColor: 'gray',
-    transform: [{rotateZ: '-135deg'}],
+    transform: [{ rotateZ: '-135deg' }],
   },
   secondProgressLayer: {
     width: 200,
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderRightColor: 'gray',
     borderTopColor: 'gray',
-    transform: [{rotateZ: '45deg'}],
+    transform: [{ rotateZ: '45deg' }],
   },
   offsetLayer: {
     width: 200,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderRightColor: 'black',
     borderTopColor: 'black',
-    transform: [{rotateZ: '-135deg'}],
+    transform: [{ rotateZ: '-135deg' }],
   },
   textOverlay: {
     position: 'absolute',
@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 40,
   },
-});
+})

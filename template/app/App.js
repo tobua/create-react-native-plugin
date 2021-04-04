@@ -1,7 +1,7 @@
 // @flow
-import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import <%= pascal %> from '<%= name %>';
+import React from 'react'
+import { StyleSheet, View, Text } from 'react-native'
+import <%= pascal %> from '<%= name %>'
 
 export default () => (
   <View style={styles.screen}>
@@ -10,7 +10,7 @@ export default () => (
     <<%= pascal %> initialCount={45} />
     <Text style={styles.subtitle}>create-react-native-plugin</Text>
   </View>
-);
+)
 
 const styles = StyleSheet.create({
   screen: {
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 15,
   },
-});
+})
