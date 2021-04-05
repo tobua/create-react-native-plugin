@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { join } from 'path'
+import { join, dirname } from 'path'
 import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync } from 'fs'
 import { copySync } from 'fs-extra'
 import { execSync } from 'child_process'
@@ -32,11 +32,9 @@ if (existsSync(name.regular)) {
 
 mkdirSync(name.regular)
 
-console.log(process.env.PWD, 'debug', process.env.INIT_CWD)
+const npmPackagePath = dirname(import.meta.url)
 
-process.exit()
-
-const templateDirectory = join(__dirname, 'template')
+const templateDirectory = join(npmPackagePath, 'template')
 const destinationDirectory = join(process.cwd(), name.regular)
 
 copySync(templateDirectory, destinationDirectory)
