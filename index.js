@@ -9,15 +9,17 @@ import customize from './customize.js'
 const args = process.argv
 
 if (args.length < 3) {
-  return console.error('Please provide a name for your plugin.')
+  console.error('Please provide a name for your plugin.')
+  process.exit()
 }
 
 const name = names(args[2])
 
 if (existsSync(name.regular)) {
-  return console.warn(
+  console.warn(
     `A folder or file named ${name.regular} already exists in ${process.cwd()}.`
   )
+  process.exit()
 }
 
 if (existsSync(name.regular)) {
