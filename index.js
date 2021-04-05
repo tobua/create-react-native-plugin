@@ -32,6 +32,10 @@ if (existsSync(name.regular)) {
 
 mkdirSync(name.regular)
 
+console.log(process.env.PWD, 'debug', process.env.INIT_CWD)
+
+process.exit()
+
 const templateDirectory = join(__dirname, 'template')
 const destinationDirectory = join(process.cwd(), name.regular)
 
