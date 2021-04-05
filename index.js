@@ -32,7 +32,7 @@ if (existsSync(name.regular)) {
 
 mkdirSync(name.regular)
 
-const npmPackagePath = dirname(import.meta.url)
+const npmPackagePath = dirname(new URL(import.meta.url).pathname)
 
 const templateDirectory = join(npmPackagePath, 'template')
 const destinationDirectory = join(process.cwd(), name.regular)
@@ -43,7 +43,10 @@ customize(name, destinationDirectory)
 
 console.log('Installing dependencies...')
 
-execSync('npm i', { cwd: destinationDirectory, stdio: 'pipe' })
+execSync('npm install --legacy-peer-deps', {
+  cwd: destinationDirectory,
+  stdio: 'pipe',
+})
 
 console.log('')
 console.log(

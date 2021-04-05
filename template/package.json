@@ -3,12 +3,30 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "app": "node create-app.js",
     "watch": "cpx 'src/**/*' app/node_modules/<%= name %>/src --watch",
     "test": "jest --watchAll",
     "lint": "eslint ./src --fix",
     "format": "prettier \"src/**/*\" --write"
+  },
+  "dependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "@react-native-community/eslint-config": "2.0.0",
+    "babel-jest": "^26.6.3",
+    "cpx": "^1.5.0",
+    "eslint": "^7.23.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.65.2",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-native": "^0.64.0",
+    "react-test-renderer": "^17.0.2",
+    "recursive-copy": "^2.0.11",
+    "rimraf": "^3.0.2"
   },
   "prettier": {
     "singleQuote": true,
@@ -29,23 +47,6 @@
   "files": [
     "src"
   ],
-  "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/node": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
-    "@react-native-community/eslint-config": "0.0.5",
-    "babel-jest": "^24.9.0",
-    "cpx": "^1.5.0",
-    "eslint": "^6.7.2",
-    "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.57.0",
-    "prettier": "^1.19.1",
-    "react": "^16.12.0",
-    "react-native": "^0.61.5",
-    "react-test-renderer": "^16.12.0",
-    "recursive-copy": "^2.0.10",
-    "rimraf": "^3.0.0"
-  },
   "engines": {
     "node": ">= 14"
   }
