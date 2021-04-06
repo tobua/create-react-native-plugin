@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/tobua/create-react-native-plugin/compare/v1.1.0...v1.1.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **app:** update app and fix installation ([ecf6800](https://github.com/tobua/create-react-native-plugin/commit/ecf680067c82341e814eb0e910cc47917ab65ee8))
+* **log:** return won't work anymore with ES module use exit ([2169138](https://github.com/tobua/create-react-native-plugin/commit/2169138976374c60eead5accb72129406dae5468))
+* **template:** get plugin path from module import meta ([1a8e8ee](https://github.com/tobua/create-react-native-plugin/commit/1a8e8ee7519ac93f38d0d41a7f895b7bf5acf896))
+
 ## 1.1.0 (2021-04-04)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "create-react-native-plugin",
   "description": "Template for creating React Native plugins without native code.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "github:tobua/create-react-native-plugin",
   "license": "MIT",
   "author": "Matthias Giger",
