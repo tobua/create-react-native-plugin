@@ -1,31 +1,8 @@
 // @flow
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
-export type Props = {
-  initialCount: number,
-}
-
-type State = {
-  count: number,
-}
-
-export default class <%= pascal %> extends Component<Props, State> {
-  static defaultProps = {
-    initialCount: 0,
-  }
-
-  state = {
-    count: this.props.initialCount,
-  }
-
-  handlePress = () => {
-    this.setState({
-      count: this.state.count + 1,
-    })
-  }
-
-  renderThirdLayer(percent: number) {
+const ThirdLayer = ({ percent }) => {
     if (percent > 50) {
       return (
         <View
@@ -36,21 +13,25 @@ export default class <%= pascal %> extends Component<Props, State> {
     }
 
     return <View style={styles.offsetLayer} />
-  }
+}
 
-  render() {
-    const { count } = this.state
-    let percent = count % 100
+export type Props = {
+  initialCount: number,
+}
+
+export const <%= pascal %> = ({ initialCount = 0 }: Props) => {
+  const [count, setCount] = useState(initialCount)
+  const percent = count % 100
 
     return (
       <View style={styles.view}>
-        <TouchableOpacity onPress={this.handlePress}>
+        <TouchableOpacity onPress={() => setCount(count + 1)}>
           <View style={styles.container}>
             <View
               key={percent}
               style={[styles.firstProgressLayer, rotation(percent, -135)]}
             />
-            {this.renderThirdLayer(percent)}
+            <ThirdLayer percent={percent} />
             <View pointerEvents="none" style={styles.textOverlay}>
               <Text style={styles.text}>{count}</Text>
             </View>
@@ -58,7 +39,6 @@ export default class <%= pascal %> extends Component<Props, State> {
         </TouchableOpacity>
       </View>
     )
-  }
 }
 
 const rotation = (percent: number, base: number) => ({

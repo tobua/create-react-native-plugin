@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import <%= pascal %> from '<%= name %>'
+import { <%= pascal %> } from '<%= name %>'
 
 export default () => (
   <View style={styles.screen}>
