@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/tobua/create-react-native-plugin/compare/v1.1.2...v1.1.3) (2021-08-19)
+
+
+### Bug Fixes
+
+* **package:** publish .gitignore, always install and no semicolon lint ([9a1e736](https://github.com/tobua/create-react-native-plugin/commit/9a1e736857278206189cfaadfde82225550c34fc))
+* **react:** compatible babel configuration & React function component ([0738ec8](https://github.com/tobua/create-react-native-plugin/commit/0738ec887d54e6dd8e61e5c096f54e4a554a3fcf))
+
 ### [1.1.2](https://github.com/tobua/create-react-native-plugin/compare/v1.1.1...v1.1.2) (2021-08-19)
 
 
