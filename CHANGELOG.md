@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/tobua/create-react-native-plugin/compare/v1.1.1...v1.1.2) (2021-08-19)
+
+
+### Bug Fixes
+
+* **package:** update dependencies ([63a68b0](https://github.com/tobua/create-react-native-plugin/commit/63a68b077d9bfd5e11622b8bb6d8c1ff61e61ce4))
+
 ### [1.1.1](https://github.com/tobua/create-react-native-plugin/compare/v1.1.0...v1.1.1) (2021-04-06)
 
 
