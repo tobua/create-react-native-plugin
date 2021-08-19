@@ -25,7 +25,7 @@ await copy(appName, 'app', {
 rimraf.sync(appName)
 
 // Install this package locally, avoiding symlinks.
-execSync('npm install $(npm pack .. | tail -1)', {
+execSync('npm install $(npm pack .. | tail -1) --legacy-peer-deps', {
   cwd: join(process.cwd(), 'app'),
   stdio: 'inherit',
 })
