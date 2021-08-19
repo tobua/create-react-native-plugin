@@ -61,9 +61,9 @@ If you have issues building the app for iOS try the following
 
 The following plugins have been created with create-react-native-plugin as a starting point.
 
-- [React Native Indicate](https://github.com/naminho/indicate/tree/master/plugins/react-native)
-  Scroll indicator for views with overflow.
-- [Reactigation](https://github.com/naminho/reactigation)
+- [Reactigation](https://github.com/tobua/reactigation)
   JS-only navigation for React Native.
-- [React Native Cols](https://github.com/naminho/react-native-cols)
+- [React Native Cols](https://github.com/tobua/react-native-cols)
   Grid for React Native.
+- [React Native Indicate](https://github.com/tobua/indicate/tree/master/plugins/react-native)
+  Scroll indicator for views with overflow.

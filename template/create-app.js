@@ -5,7 +5,7 @@ import copy from 'recursive-copy'
 import rimraf from 'rimraf'
 
 // Enhances source files inside /app with a fresh RN project template.
-const appName = 'MyPluginApp'
+const appName = '<%= pascal %>App'
 
 console.log('⌛ Initializing a fresh RN project...')
 
