@@ -33,7 +33,10 @@
     "semi": false
   },
   "eslintConfig": {
-    "extends": "@react-native-community"
+    "extends": "@react-native-community",
+    "rules": {
+      "semi": 0
+    }
   },
   "jest": {
     "preset": "react-native",

@@ -22,6 +22,7 @@
   "source": "index.js",
   "files": [
     "template",
+    "template/.gitignore",
     "**/*.js"
   ],
   "keywords": [

@@ -10,7 +10,7 @@ Starting point for creating React Native plugins without native code.
 ## Usage
 
 ```
-npm init react-native-plugin react-native-my-plugin
+npm init -y react-native-plugin react-native-my-plugin
 # or
 npx create-react-native-plugin react-native-my-plugin
 ```
