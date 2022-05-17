@@ -16,9 +16,7 @@ if (args.length < 3) {
 const name = names(args[2])
 
 if (existsSync(name.regular)) {
-  console.warn(
-    `A folder or file named ${name.regular} already exists in ${process.cwd()}.`
-  )
+  console.warn(`A folder or file named ${name.regular} already exists in ${process.cwd()}.`)
   process.exit()
 }
 
@@ -49,12 +47,8 @@ execSync('npm install --legacy-peer-deps', {
 })
 
 console.log('')
-console.log(
-  `😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`
-)
-console.log(`🛠️  Start coding in the file src/index.js.`)
-console.log(
-  `🛠️  To preview the plugin edit app/App.js and create a RN installation with:`
-)
+console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)
+console.log(`🛠️  Start coding in the file ./index.tsx.`)
+console.log(`🛠️  To preview the plugin edit app/App.js and create a RN installation with:`)
 console.log(`🐚 cd ${name.regular}`)
 console.log('🐚 npm run app')

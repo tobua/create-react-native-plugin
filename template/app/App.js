@@ -1,16 +1,6 @@
-// @flow
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { <%= pascal %> } from '<%= name %>'
-
-export default () => (
-  <View style={styles.screen}>
-    <Text style={styles.title}><%= pascal %></Text>
-    <<%= pascal %> />
-    <<%= pascal %> initialCount={45} />
-    <Text style={styles.subtitle}>create-react-native-plugin</Text>
-  </View>
-)
 
 const styles = StyleSheet.create({
   screen: {
@@ -27,3 +17,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 })
+
+export default function App() {
+  return (
+    <View style={styles.screen}>
+      <Text style={styles.title}><%= pascal %></Text>
+      <<%= pascal %> />
+      <<%= pascal %> initialCount={45} />
+      <Text style={styles.subtitle}>create-react-native-plugin</Text>
+    </View>
+  )
+}

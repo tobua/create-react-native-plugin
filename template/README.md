@@ -13,7 +13,7 @@ npm i <%= name %>
 ```jsx
 import React from 'react'
 import { Text } from 'react-native'
-import <%= pascal %> from '<%= name %>'
+import { <%= pascal %> } from '<%= name %>'
 
 export () =>
     <<%= pascal %>>
@@ -23,20 +23,19 @@ export () =>
 
 ## Development
 
+### Build
+
+Run a single build with `npm run build` and find the output in `/dist`.
+
 ### Tests
 
-Tests configured for React Native can be run as follows
-
-```
-npm test
-```
+Tests configured for React Native can be run with `npm test` or `npm run test:watch` in watch mode.
 
 ### Preview App
 
 To test your plugin on a device run the following to create a React Native app using it.
 
 ```
-npm install
 npm run app
 cd app
 react-native run-ios / react-native run-android

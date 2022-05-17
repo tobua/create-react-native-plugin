@@ -2,53 +2,113 @@
   "name": "<%= name %>",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "app": "node create-app.js",
-    "watch": "cpx 'src/**/*' app/node_modules/<%= name %>/src --watch",
-    "test": "jest --watchAll",
-    "lint": "eslint ./src --fix",
-    "format": "prettier \"src/**/*\" --write"
+    "build": "esbuild index.tsx --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
+    "watch": "concurrently --kill-others \"npm run build:watch\" \"npm run copy\"",
+    "copy": "cpx 'dist/**/*' app/node_modules/<%= name %>/dist --watch",
+    "build:watch": "esbuild index.tsx --watch --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier \"{,!(app|dist)/**/}*.{ts,tsx}\" --write"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-native": "^0.68.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@react-native-community/eslint-config": "3.0.0",
-    "babel-jest": "^27.0.6",
+    "@babel/core": "^7.17.12",
+    "@babel/runtime": "^7.17.9",
+    "@react-native-community/eslint-config": "3.0.2",
+    "@types/jest": "^27.5.1",
+    "@types/react": "^18.0.9",
+    "@types/react-native": "^0.67.7",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "babel-jest": "^28.1.0",
+    "concurrently": "^7.2.0",
     "cpx": "^1.5.0",
-    "eslint": "^7.32.0",
-    "jest": "^27.0.6",
-    "metro-react-native-babel-preset": "^0.66.2",
-    "prettier": "^2.3.2",
-    "react": "^17.0.2",
-    "react-native": "^0.65.0",
-    "react-test-renderer": "^17.0.2",
-    "recursive-copy": "^2.0.13",
-    "rimraf": "^3.0.2"
+    "esbuild": "^0.14.39",
+    "eslint": "^8.15.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "jest": "^27.5.1",
+    "metro-react-native-babel-preset": "^0.70.3",
+    "prettier": "^2.6.2",
+    "react": "^18.1.0",
+    "react-native": "^0.68.2",
+    "react-test-renderer": "^18.1.0",
+    "recursive-copy": "^2.0.14",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.4"
   },
-  "prettier": {
-    "singleQuote": true,
-    "semi": false
-  },
+  "files": [
+    "dist"
+  ],
   "eslintConfig": {
+    "root": true,
     "extends": "@react-native-community",
     "rules": {
       "semi": 0
-    }
+    },
+    "ignorePatterns": [
+      "dist",
+      "app"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "rules": {
+          "@typescript-eslint/no-shadow": [
+            "error"
+          ],
+          "no-shadow": "off",
+          "no-undef": "off"
+        }
+      }
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
   },
   "jest": {
     "preset": "react-native",
     "testPathIgnorePatterns": [
       "/app/"
     ],
+    "transformIgnorePatterns": [],
     "moduleNameMapper": {
-      "<%= name %>": "<rootDir>/src"
-    }
+      "react-dom": "react-native",
+      "<%= name %>": "<rootDir>"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
-  "files": [
-    "src"
-  ],
-  "engines": {
-    "node": ">= 14"
+  "babel": {
+    "presets": [
+      "module:metro-react-native-babel-preset"
+    ]
   }
 }

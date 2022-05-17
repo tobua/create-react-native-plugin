@@ -1,12 +1,11 @@
-// @flow
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import renderer from 'react-test-renderer'
-import <%= pascal %> from '<%= name %>'
+import renderer, { ReactTestRendererJSON } from 'react-test-renderer'
+import { <%= pascal %> } from '<%= name %>'
 
 test('Renders without any options.', () => {
   const rendered = renderer.create(<<%= pascal %> />)
-  const tree = rendered.toJSON()
+  const tree = rendered.toJSON() as ReactTestRendererJSON
 
   expect(tree.type).toEqual('View')
 })
@@ -14,7 +13,7 @@ test('Renders without any options.', () => {
 test('Renders inside a View with initialCount prop.', () => {
   const styles = StyleSheet.create({
     color: {
-      color: 'red',
+      backgroundColor: 'red',
     },
   })
 
@@ -23,7 +22,7 @@ test('Renders inside a View with initialCount prop.', () => {
       <<%= pascal %> initialCount={45} />
     </View>
   )
-  const tree = rendered.toJSON()
+  const tree = rendered.toJSON() as ReactTestRendererJSON
 
-  expect(tree.props.style.color).toEqual('red')
+  expect(tree.props.style.backgroundColor).toEqual('red')
 })

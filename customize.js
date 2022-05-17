@@ -3,13 +3,14 @@ import { readFileSync, writeFileSync } from 'fs'
 
 const files = [
   'app/App.js',
-  'src/index.js',
-  'test/basic.test.js',
-  'test/docs.test.js',
-  '.flowconfig',
+  'test/basic.test.tsx',
+  'test/docs.test.tsx',
+  'babel.config.json',
   'create-app.js',
+  'index.tsx',
   'package.json',
   'README.md',
+  'tsconfig.json',
 ]
 
 // Replace template values with plugin name.
