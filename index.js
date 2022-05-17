@@ -45,12 +45,12 @@ execSync('npm install --legacy-peer-deps', {
   stdio: 'inherit',
 })
 
-const npmIgnorePath = join(process.cwd(), '.npmignore')
+const npmIgnorePath = join(destinationDirectory, '.npmignore')
 
 if (existsSync(npmIgnorePath)) {
   // npm will apparently rename .gitignore outside a repo to prevent accidentially publishing.
   // Since this template specifies "files" in package.json that doesn't happen.
-  renameSync(npmIgnorePath, join(process.cwd(), '.gitignore'))
+  renameSync(npmIgnorePath, join(destinationDirectory, '.gitignore'))
 }
 
 console.log('')
