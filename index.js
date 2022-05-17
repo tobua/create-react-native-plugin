@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { join, dirname } from 'path'
-import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync, cpSync } from 'fs'
+import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync, cpSync, renameSync } from 'fs'
 import { execSync } from 'child_process'
 import names from './names.js'
 import customize from './customize.js'
@@ -42,8 +42,16 @@ console.log('Installing dependencies...')
 
 execSync('npm install --legacy-peer-deps', {
   cwd: destinationDirectory,
-  stdio: 'pipe',
+  stdio: 'inherit',
 })
+
+const npmIgnorePath = join(process.cwd(), '.npmignore')
+
+if (existsSync(npmIgnorePath)) {
+  // npm will apparently rename .gitignore outside a repo to prevent accidentially publishing.
+  // Since this template specifies "files" in package.json that doesn't happen.
+  renameSync(npmIgnorePath, join(process.cwd(), '.gitignore'))
+}
 
 console.log('')
 console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)

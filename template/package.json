@@ -10,7 +10,7 @@
   },
   "scripts": {
     "app": "node create-app.js",
-    "build": "esbuild index.tsx --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
+    "build": "esbuild index.tsx --outdir=dist --bundle --minify --format=esm --sourcemap --external:react-native --external:react",
     "watch": "concurrently --kill-others \"npm run build:watch\" \"npm run copy\"",
     "copy": "cpx 'dist/**/*' app/node_modules/<%= name %>/dist --watch",
     "build:watch": "esbuild index.tsx --watch --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
