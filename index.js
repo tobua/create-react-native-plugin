@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { join, dirname } from 'path'
-import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync } from 'fs'
-import { copySync } from 'fs-extra'
+import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync, cpSync } from 'fs'
 import { execSync } from 'child_process'
 import names from './names.js'
 import customize from './customize.js'
@@ -35,7 +34,7 @@ const npmPackagePath = dirname(new URL(import.meta.url).pathname)
 const templateDirectory = join(npmPackagePath, 'template')
 const destinationDirectory = join(process.cwd(), name.regular)
 
-copySync(templateDirectory, destinationDirectory)
+cpSync(templateDirectory, destinationDirectory, { recursive: true })
 
 customize(name, destinationDirectory)
 
