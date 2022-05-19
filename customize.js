@@ -11,6 +11,7 @@ const files = [
   'package.json',
   'README.md',
   'tsconfig.json',
+  'tsconfig-build.json',
 ]
 
 // Replace template values with plugin name.
