@@ -32,9 +32,9 @@ execSync('npm install $(npm pack .. | tail -1) --legacy-peer-deps', {
 
 console.log('')
 console.log('🍞 React Native App created inside /app.')
-console.log('🛠️ To run the example with the plugin included:')
+console.log('🛠️  To run the example with the plugin included:')
 console.log('🐚 cd app')
 console.log('🐚 npm run ios / npm run android')
-console.log('🌪️ To copy over the changes from the plugin source run:')
+console.log('🌪️  To copy over the changes from the plugin source run:')
 console.log('🐚 npm run watch')
-console.log('🛠️ This will copy changes over to the app.')
+console.log('🛠️  This will copy changes over to the app.')

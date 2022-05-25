@@ -7,6 +7,7 @@ Starting point for creating React Native plugins in TypeScript without native co
 - Bundle plugin in TypeScript with esbuild
 - Setup demo app with plugin installed
 - Watch plugin for changes
+- Jest, ESLint and Prettier configured
 
 ## Usage
 

@@ -13,11 +13,12 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "noEmit": true,
     "outDir": "dist",
+    "emitDeclarationOnly": true,
     "paths": {
       "<%= name %>": ["."]
     }
   },
-  "exclude": ["node_modules", "babel.config.cjs"]
+  "include": ["index.tsx"],
+  "exclude": ["node_modules"]
 }
