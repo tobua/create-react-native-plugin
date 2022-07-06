@@ -11,6 +11,8 @@ Starting point for creating React Native plugins in TypeScript without native co
 
 ## Usage
 
+> :warning: **node**: Requires at least node version 16.
+
 ```
 npm init -y react-native-plugin react-native-my-plugin
 # or

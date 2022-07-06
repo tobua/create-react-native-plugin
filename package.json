@@ -25,7 +25,7 @@
     "template"
   ],
   "devDependencies": {
-    "padua": "^0.5.6"
+    "padua": "^0.6.1"
   },
   "prettier": "padua/configuration/.prettierrc.json",
   "eslintConfig": {
