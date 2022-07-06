@@ -5,13 +5,14 @@ const files = [
   'app/App.js',
   'test/basic.test.tsx',
   'test/docs.test.tsx',
+  'test/tsconfig.json',
+  '.gitignore',
   'babel.config.json',
   'create-app.js',
   'index.tsx',
   'package.json',
   'README.md',
   'tsconfig.json',
-  'tsconfig-build.json',
 ]
 
 // Replace template values with plugin name.
