@@ -1,5 +1,5 @@
 import { join } from 'path'
-import { readFileSync, writeFileSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
 
 const files = [
   'app/App.js',
@@ -19,6 +19,11 @@ const files = [
 export default (name, directory) => {
   const replaceTemplateVariables = (file) => {
     const filePath = join(directory, file)
+
+    if (!existsSync(filePath)) {
+      return
+    }
+
     let contents = readFileSync(filePath, 'utf-8')
 
     contents = contents.replace(/<%= name %>/g, name.regular)

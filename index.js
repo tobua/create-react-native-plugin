@@ -36,6 +36,14 @@ const destinationDirectory = join(process.cwd(), name.regular)
 
 cpSync(templateDirectory, destinationDirectory, { recursive: true })
 
+const npmIgnorePath = join(destinationDirectory, '.npmignore')
+
+if (existsSync(npmIgnorePath)) {
+  // npm will apparently rename .gitignore outside a repo to prevent accidentially publishing.
+  // Since this template specifies "files" in package.json that doesn't happen.
+  renameSync(npmIgnorePath, join(destinationDirectory, '.gitignore'))
+}
+
 customize(name, destinationDirectory)
 
 console.log('Installing dependencies...')
@@ -44,14 +52,6 @@ execSync('npm install --legacy-peer-deps', {
   cwd: destinationDirectory,
   stdio: 'inherit',
 })
-
-const npmIgnorePath = join(destinationDirectory, '.npmignore')
-
-if (existsSync(npmIgnorePath)) {
-  // npm will apparently rename .gitignore outside a repo to prevent accidentially publishing.
-  // Since this template specifies "files" in package.json that doesn't happen.
-  renameSync(npmIgnorePath, join(destinationDirectory, '.gitignore'))
-}
 
 console.log('')
 console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)
