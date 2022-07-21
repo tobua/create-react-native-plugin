@@ -1,10 +1,9 @@
 #!/usr/bin/env node
+import { copyFileSync, renameSync, rmSync } from 'fs'
 import { join } from 'path'
 import { execSync } from 'child_process'
-import copy from 'recursive-copy'
-import rimraf from 'rimraf'
 
-// Enhances source files inside /app with a fresh RN project template.
+// This script enhances source files inside /app with a fresh React Native template.
 const appName = '<%= pascal %>App'
 
 console.log('⌛ Initializing a fresh RN project...')
@@ -14,15 +13,11 @@ execSync(`npx react-native init ${appName}`, {
   stdio: 'inherit',
 })
 
-// Copy to destination directory, leaving source files untouched.
-await copy(appName, 'app', {
-  dot: true,
-  overwrite: false,
-  filter: ['**/*', '!App.js'],
-})
+copyFileSync('app/App.js', `${appName}/App.js`)
 
-// Remove temporary project directory.
-rimraf.sync(appName)
+rmSync('app', { recursive: true })
+
+renameSync(appName, 'app')
 
 // Install this package locally, avoiding symlinks.
 execSync('npm install $(npm pack .. | tail -1) --legacy-peer-deps', {
