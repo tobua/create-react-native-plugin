@@ -14,9 +14,9 @@ Starting point for creating React Native plugins in TypeScript without native co
 > :warning: **node**: Requires at least node version 16.
 
 ```
-npm init -y react-native-plugin react-native-my-plugin
+npm init -y react-native-plugin@latest react-native-my-plugin
 # or
-npx create-react-native-plugin react-native-my-plugin
+npx create-react-native-plugin@latest react-native-my-plugin
 ```
 
 This will bootstrap a new plugin inside a folder named `react-native-my-plugin` accordingly. Inside that folder the commands mentioned hereafter are available. The prefix `react-native-` is optional and will be removed where the React Native context is implied.
@@ -76,6 +76,8 @@ The following plugins have been created with create-react-native-plugin as a sta
   Scroll indicator for views with overflow.
 - [Naxos](https://github.com/tobua/naxos)
   UI Library.
+- [Responsive React Native](https://github.com/tobua/responsive-react-native)
+  Automatically transforms StyleSheet values responsively.
 
 <p align="center">
   <img src="https://github.com/tobua/create-react-native-plugin/raw/main/app.png" alt="Plugin running in Preview App" width="250">
