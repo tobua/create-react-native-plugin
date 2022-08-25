@@ -19,6 +19,11 @@ rmSync('app', { recursive: true })
 
 renameSync(appName, 'app')
 
+// Run build to ensure distributed files for plugin exist.
+execSync('npm run build', {
+  stdio: 'inherit',
+})
+
 // Install this package locally, avoiding symlinks.
 execSync('npm install $(npm pack .. | tail -1) --legacy-peer-deps', {
   cwd: join(process.cwd(), 'app'),
