@@ -13,7 +13,7 @@ execSync(`npx react-native init ${appName}`, {
   stdio: 'inherit',
 })
 
-copyFileSync('app/App.js', `${appName}/App.js`)
+copyFileSync('app/App.tsx', `${appName}/App.tsx`)
 
 rmSync('app', { recursive: true })
 
