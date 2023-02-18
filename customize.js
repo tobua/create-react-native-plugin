@@ -2,7 +2,7 @@ import { join } from 'path'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 
 const files = [
-  'app/App.js',
+  'app/App.tsx',
   'test/basic.test.tsx',
   'test/docs.test.tsx',
   'test/tsconfig.json',

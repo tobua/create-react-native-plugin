@@ -31,13 +31,13 @@ Since you probably don't want to blind-code the whole plugin use the following c
 npm run app
 ```
 
-This will create an app inside `/app` where except `/app/App.js` all files are gitignored. Here you can try out various use cases of the plugin and use this as a way to demonstrate the plugin.
+This will create an app inside `/app` where except `/app/App.tsx` all files are gitignored. Here you can try out various use cases of the plugin and use this as a way to demonstrate the plugin. The app can be started as usual by running `npm run ios` or `npm run android` inside the `/app` folder.
 
 ```
 npm run watch
 ```
 
-Running the above will watch the plugin source code for any kind of changes, rebuild and copy over the changes to the app which will then automatically hot-reload.
+Running the above in the root folder will watch the plugin source code for any kind of changes, rebuild and copy over the changes to the app which will then automatically hot-reload.
 
 Don't forget to always check your plugin both on Android and iOS even though your not using native code the provided components might still differ depending on the platform.
 
@@ -49,10 +49,6 @@ The template is configured to work with Jest out of the box. All non-native func
 npm test
 npm run test:watch # Keep watching and retesting on changes.
 ```
-
-## TypeScript
-
-Flow the type checker native to React Native has largely failed to gain popularity and also lags behind TypeScript in many other important aspects. Since a good chunk of bigger React Native projects are written in TypeScript plugins should provide type definitions.
 
 ## Troubleshooting
 
