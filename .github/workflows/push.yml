@@ -7,8 +7,12 @@ on:
 jobs:
   test-release:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
     steps:
       - uses: actions/checkout@v3
-      - uses: tobua/release-npm-action@v1
+      - run: npm install -g npm@latest
+      - uses: tobua/release-npm-action@v2
         with:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
