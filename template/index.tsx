@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Pressable } from 'react-native'
 
 const rotation = (percent: number, base: number) => ({
   transform: [{ rotateZ: `${base + (percent > 50 ? 50 : percent) * 3.6}deg` }],
@@ -20,14 +20,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  highlight: {
+    borderColor: '#474747',
+  },
   firstProgressLayer: {
     width: 200,
     height: 200,
     borderWidth: 20,
     borderRadius: 100,
     position: 'absolute',
-    borderLeftColor: 'transparent',
-    borderBottomColor: 'transparent',
+    // Transparent borders not working on Android, use an almost transparent color.
+    borderLeftColor: 'rgba(0, 0, 0, 0.01)',
+    borderBottomColor: 'rgba(0, 0, 0, 0.01)',
     borderRightColor: 'gray',
     borderTopColor: 'gray',
     transform: [{ rotateZ: '-135deg' }],
@@ -38,8 +42,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderWidth: 20,
     borderRadius: 100,
-    borderLeftColor: 'transparent',
-    borderBottomColor: 'transparent',
+    borderLeftColor: 'rgba(0, 0, 0, 0.01)',
+    borderBottomColor: 'rgba(0, 0, 0, 0.01)',
     borderRightColor: 'gray',
     borderTopColor: 'gray',
     transform: [{ rotateZ: '45deg' }],
@@ -50,11 +54,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderWidth: 20,
     borderRadius: 100,
-    borderLeftColor: 'transparent',
-    borderBottomColor: 'transparent',
+    borderLeftColor: 'rgba(0, 0, 0, 0.01)',
+    borderBottomColor: 'rgba(0, 0, 0, 0.01)',
     borderRightColor: 'black',
     borderTopColor: 'black',
     transform: [{ rotateZ: '-135deg' }],
+  },
+  highlightOffset: {
+    borderRightColor: '#474747',
+    borderTopColor: '#474747',
   },
   textOverlay: {
     position: 'absolute',
@@ -64,9 +72,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 40,
   },
+  textBold: {
+    fontWeight: 'bold',
+  },
 })
 
-const ThirdLayer = ({ percent }: { percent: number }) => {
+const ThirdLayer = ({ percent, pressed }: { percent: number; pressed: boolean }) => {
   if (percent > 50) {
     return (
       <View
@@ -76,7 +87,7 @@ const ThirdLayer = ({ percent }: { percent: number }) => {
     )
   }
 
-  return <View style={styles.offsetLayer} />
+  return <View style={[styles.offsetLayer, pressed && styles.highlightOffset]} />
 }
 
 export type Props = {
@@ -89,15 +100,17 @@ export const <%= pascal %> = ({ initialCount = 0 }: Props) => {
 
   return (
     <View style={styles.view}>
-      <TouchableOpacity onPress={() => setCount(count + 1)}>
-        <View style={styles.container}>
-          <View key={percent} style={[styles.firstProgressLayer, rotation(percent, -135)]} />
-          <ThirdLayer percent={percent} />
-          <View pointerEvents="none" style={styles.textOverlay}>
-            <Text style={styles.text}>{count}</Text>
+      <Pressable onPress={() => setCount(count + 1)}>
+        {({ pressed }) => (
+          <View style={[styles.container, pressed && styles.highlight]}>
+            <View key={percent} style={[styles.firstProgressLayer, rotation(percent, -135)]} />
+            <ThirdLayer percent={percent} pressed={pressed} />
+            <View pointerEvents="none" style={styles.textOverlay}>
+              <Text style={[styles.text, pressed && styles.textBold]}>{count}</Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        )}
+      </Pressable>
     </View>
   )
 }

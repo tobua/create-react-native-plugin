@@ -38,7 +38,7 @@ To test your plugin on a device run the following to create a React Native app u
 ```
 npm run app
 cd app
-react-native run-ios / react-native run-android
+npm run ios / npm run android
 ```
 
 The following command will automatically copy over changes made to the plugin to the app.
