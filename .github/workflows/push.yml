@@ -12,7 +12,6 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-      - run: npm install -g npm@latest
-      - uses: tobua/release-npm-action@v2
+      - uses: tobua/release-npm-action@v3
         with:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
