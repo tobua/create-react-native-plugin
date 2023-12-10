@@ -25,7 +25,7 @@ execSync('npm run build', {
 })
 
 // Install this package locally, avoiding symlinks.
-execSync('npm install $(npm pack .. | tail -1) --legacy-peer-deps', {
+execSync('npm install $(npm pack .. | tail -1)', {
   cwd: join(process.cwd(), 'app'),
   stdio: 'inherit',
 })

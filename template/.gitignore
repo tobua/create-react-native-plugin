@@ -2,5 +2,6 @@ node_modules
 # package-lock.json has no effect when publishing your plugin to npm.
 package-lock.json
 dist
+<%= pascal %>App
 app/**/*
 !app/App.tsx

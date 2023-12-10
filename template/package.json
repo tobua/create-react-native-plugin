@@ -2,16 +2,6 @@
   "name": "<%= name %>",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "type": "module",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
   "scripts": {
     "app": "node create-app.js",
     "app:install": "npm i --no-save $(npm pack . | tail -1)  --prefix app",
@@ -23,10 +13,6 @@
     "test:watch": "jest --watchAll",
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "format": "prettier \"{,!(app|dist)/**/}*.{ts,tsx}\" --write"
-  },
-  "peerDependencies": {
-    "react": ">= 18",
-    "react-native": ">= 0.70"
   },
   "devDependencies": {
     "@react-native-community/cli": "^13.0.0",
@@ -52,37 +38,39 @@
     "react-test-renderer": "^18.2.0",
     "typescript": "^5.3.3"
   },
+  "peerDependencies": {
+    "react": ">= 18",
+    "react-native": ">= 0.70"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true
+  },
   "eslintConfig": {
-    "root": true,
-    "extends": "@react-native-community",
+    "extends": "@react-native",
     "rules": {
       "semi": 0
     },
     "ignorePatterns": [
       "dist",
       "app"
-    ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 100
+    ],
+    "root": true
   },
   "jest": {
-    "preset": "react-native",
-    "testPathIgnorePatterns": [
-      "/app/"
-    ],
-    "transformIgnorePatterns": [
-      "node_modules/(?!react-native|@react-native)"
-    ],
-    "moduleNameMapper": {
-      "react-dom": "react-native",
-      "<%= name %>": "<rootDir>"
-    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -90,6 +78,20 @@
       "jsx",
       "json",
       "node"
+    ],
+    "moduleNameMapper": {
+      "react-dom": "react-native",
+      "<%= name %>": "<rootDir>"
+    },
+    "preset": "react-native",
+    "testPathIgnorePatterns": [
+      "/app/"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|@react-native)"
     ]
+  },
+  "publishConfig": {
+    "provenance": false
   }
 }
