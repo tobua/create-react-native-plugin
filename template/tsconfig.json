@@ -1,24 +1,14 @@
 {
+  "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["es2017"],
-    "allowJs": true,
-    "jsx": "react",
-    "isolatedModules": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "declaration": true,
     "outDir": "dist",
+    "noEmit": false,
+    "declaration": true,
     "emitDeclarationOnly": true,
+    "types": ["react-native", "jest", "node"],
     "paths": {
       "<%= name %>": ["."]
     }
   },
-  "include": ["index.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["index.tsx"]
 }

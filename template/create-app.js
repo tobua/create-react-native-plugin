@@ -8,7 +8,7 @@ const appName = '<%= pascal %>App'
 
 console.log('⌛ Initializing a fresh RN project...')
 
-execSync(`npx react-native init ${appName}`, {
+execSync(`npx react-native init ${appName} --skip-git-init true --install-pods true`, {
   // Write output to cnosole.
   stdio: 'inherit',
 })
