@@ -6,13 +6,16 @@
   "license": "MIT",
   "author": "Matthias Giger",
   "padua": {
-    "source": true
+    "source": true,
+    "ignore": [
+      "template"
+    ]
   },
   "dependencies": {
-    "change-case": "5.3.0"
+    "change-case": "5.4.2"
   },
   "devDependencies": {
-    "padua": "^2.0.7"
+    "padua": "^2.0.9"
   },
   "type": "module",
   "bin": "index.js",
@@ -31,6 +34,7 @@
   "eslintConfig": {
     "extends": "./node_modules/padua/configuration/eslint.cjs",
     "rules": {
+      "no-console": 0,
       "import/extensions": [
         2,
         "ignorePackages"
