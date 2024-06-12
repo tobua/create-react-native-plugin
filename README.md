@@ -12,9 +12,8 @@ Starting point for creating React Native plugins in TypeScript without native co
 ## Usage
 
 ```
-npm init -y react-native-plugin@latest react-native-my-plugin
-# or
-npx create-react-native-plugin@latest react-native-my-plugin
+bun create react-native-plugin react-native-my-plugin
+npm init -y react-native-plugin@latest react-native-my-plugin / npx create-react-native-plugin@latest react-native-my-plugin
 ```
 
 This will bootstrap a new plugin inside a folder named `react-native-my-plugin` accordingly. Inside that folder the commands mentioned hereafter are available. The prefix `react-native-` is optional and will be removed where the React Native context is implied.

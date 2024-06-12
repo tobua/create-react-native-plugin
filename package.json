@@ -5,21 +5,21 @@
   "repository": "github:tobua/create-react-native-plugin",
   "license": "MIT",
   "author": "Matthias Giger",
-  "padua": {
-    "source": true,
-    "ignore": [
-      "template"
-    ]
+  "scripts": {
+    "check": "biome check --write ."
   },
   "dependencies": {
-    "change-case": "5.4.2"
+    "change-case": "^5.4.4"
   },
   "devDependencies": {
-    "padua": "^2.0.9"
+    "@biomejs/biome": "^1.8.1",
+    "zero-configuration": "^0.10.1"
   },
+  "trustedDependencies": [
+    "zero-configuration"
+  ],
   "type": "module",
-  "bin": "index.js",
-  "source": "index.js",
+  "bin": "./index.js",
   "files": [
     "template",
     "template/.gitignore",
@@ -30,21 +30,32 @@
     "plugin",
     "template"
   ],
-  "prettier": "padua/configuration/.prettierrc.json",
-  "eslintConfig": {
-    "extends": "./node_modules/padua/configuration/eslint.cjs",
-    "rules": {
-      "no-console": 0,
-      "import/extensions": [
-        2,
-        "ignorePackages"
-      ]
-    }
-  },
   "publishConfig": {
     "provenance": true
   },
-  "engines": {
-    "node": ">= 18"
+  "configuration": {
+    "biome": {
+      "extends": "recommended",
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNodejsModules": "off"
+          },
+          "suspicious": {
+            "noConsoleLog": "off"
+          },
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      },
+      "files": {
+        "ignore": [
+          "template"
+        ]
+      }
+    },
+    "gitignore": "recommended",
+    "vscode": "biome"
   }
 }

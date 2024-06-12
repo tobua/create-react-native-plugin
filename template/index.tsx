@@ -80,10 +80,7 @@ const styles = StyleSheet.create({
 const ThirdLayer = ({ percent, pressed }: { percent: number; pressed: boolean }) => {
   if (percent > 50) {
     return (
-      <View
-        key={percent + 99999}
-        style={[styles.secondProgressLayer, rotation(percent - 50, 45)]}
-      />
+      <View key={percent + 99999} style={[styles.secondProgressLayer, rotation(percent - 50, 45)]} />
     )
   }
 

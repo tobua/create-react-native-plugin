@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { join, dirname } from 'path'
-import { existsSync, unlinkSync, rmdirSync, lstatSync, mkdirSync, cpSync, renameSync } from 'fs'
-import { execSync } from 'child_process'
-import names from './names.js'
+import { execSync } from 'node:child_process'
+import { cpSync, existsSync, lstatSync, mkdirSync, renameSync, rmdirSync, unlinkSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import customize from './customize.js'
+import names from './names.js'
 
 const args = process.argv
 
@@ -55,7 +55,7 @@ execSync('npm install --legacy-peer-deps', {
 
 console.log('')
 console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)
-console.log(`🛠️  Start coding in the file ./index.tsx.`)
-console.log(`🛠️  To preview the plugin edit app/App.tsx and create a RN installation with:`)
+console.log('🛠️  Start coding in the file ./index.tsx.')
+console.log('🛠️  To preview the plugin edit app/App.tsx and create a RN installation with:')
 console.log(`🐚 cd ${name.regular}`)
 console.log('🐚 npm run app')
