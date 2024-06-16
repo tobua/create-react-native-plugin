@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.1",
-    "zero-configuration": "^0.10.1"
+    "zero-configuration": "^0.12.0"
   },
   "trustedDependencies": [
     "zero-configuration"

@@ -5,12 +5,13 @@
   "scripts": {
     "app": "node create-app.js",
     "app:install": "npm i --no-save $(npm pack . | tail -1) --prefix app",
-    "build": "esbuild index.tsx --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react && tsc",
+    "build": "esbuild index.tsx --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
     "watch": "npm-run-all --parallel build:watch copy",
     "copy": "cpx 'dist/**/*' app/node_modules/<%= name %>/dist --watch",
     "build:watch": "esbuild index.tsx --watch --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
     "test": "jest",
     "test:watch": "jest --watchAll",
+    "types": "tsc",
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "format": "prettier \"{,!(app|dist)/**/}*.{ts,tsx}\" --write"
   },

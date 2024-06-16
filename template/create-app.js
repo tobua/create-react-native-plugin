@@ -1,14 +1,14 @@
-#!/usr/bin/env node
 import { copyFileSync, renameSync, rmSync } from 'fs'
 import { join } from 'path'
 import { execSync } from 'child_process'
 
 // This script enhances source files inside /app with a fresh React Native template.
 const appName = '<%= pascal %>App'
+const isBun = typeof Bun !== 'undefined'
 
 console.log('⌛ Initializing a fresh RN project...')
 
-execSync(`npx react-native init ${appName} --skip-git-init true --install-pods true`, {
+execSync(`${isBun ? 'bunx' : 'npx'} react-native init ${appName} --skip-git-init true --install-pods true`, {
   // Write output to cnosole.
   stdio: 'inherit',
 })
@@ -20,7 +20,7 @@ rmSync('app', { recursive: true })
 renameSync(appName, 'app')
 
 // Run build to ensure distributed files for plugin exist.
-execSync('npm run build', {
+execSync(`${isBun ? 'bun' : 'npm'} run build`, {
   stdio: 'inherit',
 })
 

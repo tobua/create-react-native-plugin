@@ -48,10 +48,18 @@ customize(name, destinationDirectory)
 
 console.log('Installing dependencies...')
 
-execSync('npm install --legacy-peer-deps', {
-  cwd: destinationDirectory,
-  stdio: 'inherit',
-})
+// biome-ignore lint/correctness/noUndeclaredVariables: Used to detect Bun as the runtime.
+if (typeof Bun !== 'undefined') {
+  execSync('bun install', {
+    cwd: destinationDirectory,
+    stdio: 'inherit',
+  })
+} else {
+  execSync('npm install --legacy-peer-deps', {
+    cwd: destinationDirectory,
+    stdio: 'inherit',
+  })
+}
 
 console.log('')
 console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)
