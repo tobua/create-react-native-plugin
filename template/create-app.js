@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import { copyFileSync, cpSync, readFileSync, renameSync, rmSync } from 'fs'
+import { copyFileSync, cpSync, readFileSync, renameSync, rmSync, mkdirSync } from 'fs'
 import { join, resolve } from 'path'
 import Arborist from '@npmcli/arborist'
 import packlist from 'npm-packlist'
