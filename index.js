@@ -66,4 +66,4 @@ console.log(`😃 Created new plugin called ${name.regular} in ${destinationDire
 console.log('🛠️  Start coding in the file ./index.tsx.')
 console.log('🛠️  To preview the plugin edit app/App.tsx and create a RN installation with:')
 console.log(`🐚 cd ${name.regular}`)
-console.log('🐚 npm run app')
+console.log('🐚 npm run app / bun app:bun')

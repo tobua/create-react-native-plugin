@@ -12,7 +12,7 @@ Starting point for creating React Native plugins in TypeScript without native co
 ## Usage
 
 ```
-bun create react-native-plugin react-native-my-plugin
+bun --bun create react-native-plugin react-native-my-plugin
 npm init -y react-native-plugin@latest react-native-my-plugin / npx create-react-native-plugin@latest react-native-my-plugin
 ```
 
