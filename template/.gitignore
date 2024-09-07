@@ -1,8 +1,7 @@
 node_modules
-# package-lock.json / bun.lockb has no effect when publishing your plugin to npm.
-package-lock.json
+# Lockfiles have no effect when publishing your plugin to a registry.
 bun.lockb
-dist
 <%= pascal %>App
+*.tgz
 app/**/*
 !app/App.tsx

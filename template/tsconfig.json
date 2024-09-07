@@ -1,14 +1,7 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "noEmit": false,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "types": ["react-native", "jest", "node"],
-    "paths": {
-      "<%= name %>": ["."]
-    }
+    "types": ["node", "react-native", "jest"]
   },
   "include": ["index.tsx"]
 }

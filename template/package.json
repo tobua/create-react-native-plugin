@@ -3,42 +3,33 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "app": "node create-app.js",
-    "app:bun": "bun create-app.js",
-    "app:install": "npm i --no-save $(npm pack . | tail -1) --prefix app",
-    "build": "esbuild index.tsx --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
-    "watch": "npm-run-all --parallel build:watch copy",
-    "copy": "cpx 'dist/**/*' app/node_modules/<%= name %>/dist --watch",
-    "build:watch": "esbuild index.tsx --watch --outdir=dist --bundle --format=esm --sourcemap --external:react-native --external:react",
+    "app": "bun create-app.js",
+    "copy": "cpx '*.{ts,tsx}' app/node_modules/<%= name %> --watch",
+    "format": "prettier \"{,!(app|dist)/**/}*.{ts,tsx}\" --write",
+    "lint": "eslint . --fix --ext .ts,.tsx",
     "test": "jest",
-    "test:watch": "jest --watchAll",
-    "types": "tsc",
-    "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier \"{,!(app|dist)/**/}*.{ts,tsx}\" --write"
+    "types": "tsc && tsc --noEmit --project ./test/tsconfig.json"
   },
   "devDependencies": {
-    "@npmcli/arborist": "^7.5.4",
-    "@react-native-community/cli": "^14.0.0",
-    "@react-native/babel-preset": "^0.75.1",
-    "@react-native/eslint-config": "^0.75.1",
-    "@react-native/typescript-config": "^0.75.1",
+    "@react-native-community/cli": "^14.0.1",
+    "@react-native/babel-preset": "^0.75.2",
+    "@react-native/eslint-config": "^0.75.2",
+    "@react-native/typescript-config": "^0.75.2",
+    "@types/bun": "^1.1.8",
     "@types/jest": "^29.5.12",
-    "@types/node": "^22.4.0",
-    "@types/react": "^18.3.3",
+    "@types/node": "^22.5.4",
+    "@types/react": "^18.3.5",
     "@types/react-native": "^0.73.0",
     "@types/react-test-renderer": "^18.3.0",
     "babel-jest": "^29.7.0",
     "cpx": "^1.5.0",
-    "esbuild": "^0.23.1",
     "eslint": "8.57.0",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-prettier": "^5.2.1",
     "jest": "^29.7.0",
-    "npm-packlist": "^8.0.2",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
-    "react-native": "^0.75.1",
+    "react-native": "^0.75.2",
     "react-test-renderer": "^18.3.1",
     "typescript": "^5.5.4"
   },
@@ -47,19 +38,17 @@
     "react-native": ">= 0.70"
   },
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./index.tsx",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
+    ".": "./index.tsx"
   },
-  "types": "./dist/index.d.ts",
+  "types": "./index.tsx",
   "files": [
-    "dist"
+    "*.ts",
+    "*.tsx"
   ],
   "prettier": {
-    "printWidth": 120,
+    "printWidth": 140,
     "semi": false,
     "singleQuote": true
   },
@@ -69,7 +58,6 @@
       "semi": 0
     },
     "ignorePatterns": [
-      "dist",
       "app"
     ],
     "root": true
@@ -78,13 +66,9 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
+      "js"
     ],
     "moduleNameMapper": {
-      "react-dom": "react-native",
       "<%= name %>": "<rootDir>"
     },
     "preset": "react-native",

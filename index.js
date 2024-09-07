@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 import { execSync } from 'node:child_process'
 import { cpSync, existsSync, lstatSync, mkdirSync, renameSync, rmdirSync, unlinkSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -29,9 +29,8 @@ if (existsSync(name.regular)) {
 
 mkdirSync(name.regular)
 
-const npmPackagePath = dirname(new URL(import.meta.url).pathname)
-
-const templateDirectory = join(npmPackagePath, 'template')
+const packagePath = dirname(new URL(import.meta.url).pathname)
+const templateDirectory = join(packagePath, 'template')
 const destinationDirectory = join(process.cwd(), name.regular)
 
 cpSync(templateDirectory, destinationDirectory, { recursive: true })
@@ -48,22 +47,14 @@ customize(name, destinationDirectory)
 
 console.log('Installing dependencies...')
 
-// biome-ignore lint/correctness/noUndeclaredVariables: Used to detect Bun as the runtime.
-if (typeof Bun !== 'undefined') {
-  execSync('bun install', {
-    cwd: destinationDirectory,
-    stdio: 'inherit',
-  })
-} else {
-  execSync('npm install --legacy-peer-deps', {
-    cwd: destinationDirectory,
-    stdio: 'inherit',
-  })
-}
+execSync('bun install', {
+  cwd: destinationDirectory,
+  stdio: 'inherit',
+})
 
 console.log('')
 console.log(`😃 Created new plugin called ${name.regular} in ${destinationDirectory}.`)
 console.log('🛠️  Start coding in the file ./index.tsx.')
-console.log('🛠️  To preview the plugin edit app/App.tsx and create a RN installation with:')
+console.log('🛠️  To preview the plugin edit app/App.tsx and create a React Native installation with:')
 console.log(`🐚 cd ${name.regular}`)
-console.log('🐚 npm run app / bun app:bun')
+console.log('🐚 bun app')

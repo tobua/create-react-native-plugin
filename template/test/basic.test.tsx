@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import renderer, { ReactTestRendererJSON } from 'react-test-renderer'
-import { <%= pascal %> } from '<%= name %>'
+import { <%= pascal %> } from '../index'
 
 test('Renders without any options.', () => {
   const rendered = renderer.create(<<%= pascal %> />)
